@@ -1,1 +1,3 @@
-console.log('webpack test')
+import { navBarSlider } from "./uiFunction";
+
+navBarSlider()
