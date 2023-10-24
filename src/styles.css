@@ -35,7 +35,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 ol, ul {
-	list-style: none;
+	list-style-type: none;
+ 
 }
 blockquote, q {
 	quotes: none;
@@ -77,6 +78,22 @@ table {
 h1{
 font-size: 1.3rem;
 padding-left: 15px;
+color: #f0f0f0;
+}
+
+h2{
+    border-bottom: 2px solid #d1453b;
+    width: 70%;
+    font-size: 1.5rem;
+}
+
+li{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: start;
+    
 }
 
 body {
@@ -101,7 +118,7 @@ body {
     display: inline-block;
     width: 32px;
     height: 4px;
-    background-color: black;
+    background-color: #f0f0f0;
     border-radius: 3px;
     margin-left: var(--space-small);
   }
@@ -112,7 +129,7 @@ body {
     position: absolute;
     width: 32px;
     height: 4px;
-    background-color: black;
+    background-color: #f0f0f0;
     border-radius: 3px;
   }
   
@@ -134,8 +151,29 @@ nav{
         background-color: #e6e6e6; /* Black*/
         overflow: hidden; /* Disable horizontal scroll */
         padding-top: 60px; /* Place content 60px from the top */
-        transition: all 1s ease-out;
+        transition: all 0.2s ease-out;
     }
+
+    .menu{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-left: 20px;
+        gap: 25px;
+    }
+
+button{
+    border: none;
+    padding: 10px;
+    background-color: #e6e6e9;
+    font-size: 1.2rem;
+}
+
+button:hover{
+background-color: #f0f0f0;
+border-radius: 5px;
+border-bottom: 2px solid #d1453b;
+}
 
 .center{
     height: 95%;
@@ -153,7 +191,7 @@ nav{
 .cardArea
 {  
     margin-left: 250px;
-    transition: all 1s ease-out;
+    transition: all 0.2s ease-out;
 
 }
 
