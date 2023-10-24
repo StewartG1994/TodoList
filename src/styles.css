@@ -87,6 +87,13 @@ h2{
     font-size: 1.5rem;
 }
 
+
+h3{
+    border-bottom: 2px solid black;
+    font-size: 1.5rem;
+    padding: 15px;
+}
+
 li{
     margin-bottom: 20px;
     display: flex;
@@ -198,5 +205,7 @@ border-bottom: 2px solid #d1453b;
 .card{
     width: 80vw;
     height: 50vh;
-    background-color: #eb8909;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
