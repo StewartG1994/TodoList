@@ -94,13 +94,35 @@ h3{
     padding: 15px;
 }
 
+h4{
+    padding: 15px;
+}
 li{
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
     justify-content: start;
-    
+}
+
+.projectLi{
+margin: 0;
+border: none;
+padding: 10px;
+background-color: #e6e6e9;
+font-size: 1.2rem;
+border-bottom: 2px solid #e6e6e6;
+cursor: pointer;
+}
+
+.projectLi:hover{
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border-bottom: 2px solid #d1453b;
+}
+
+.arrowImg{
+    transform: rotate(180deg);
 }
 
 body {
@@ -208,4 +230,23 @@ border-bottom: 2px solid #d1453b;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+
+.projectAddDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projectAddDiv > input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #e6e6e6;
+    
+}
+
+.addBtn .closeBtn {
+    padding: 0px;
 }
