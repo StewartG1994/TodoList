@@ -24,7 +24,7 @@ function addItem(item, node){
         projectArray.push(createProject(item.value))
         projectArray.forEach(element =>{
             createListItem(element.projectName, projectArray.indexOf(element))
-            runProjectView()
+     
 
         })
         document.querySelector('#projectButton').disabled = false;
@@ -79,6 +79,7 @@ function createListItem(projectName, index){
     arrowIcon.src = arrowImage;
     project.appendChild(arrowIcon);
     listNode.append(project);
+    runProjectView(project)
 }
 
 function projectView(){
@@ -87,11 +88,8 @@ function projectView(){
 
 }
 
-function runProjectView (){
-let listItem = document.querySelectorAll('.projectLi');
-let dataNumber = 0;
-listItem.forEach(item => item.addEventListener('click', (event) => {dataNumber = event.target.getAttribute('indexId')}))
-console.log(dataNumber)
+function runProjectView (project){
+project.addEventListener('click', (event) => {console.log(projectArray[event.target.getAttribute('indexId')])})
 
 }
 
