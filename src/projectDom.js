@@ -27,9 +27,10 @@ function listItemAddInputComponent (node){
 }
 
 
-function createListItem(projectName){  
+function createListItem(projectName, attribute){  
     const listNode = document.querySelector('.projectList')
     let project = document.createElement('li');
+    project.setAttribute('index', attribute)
     project.classList.add('projectLi')
     project.textContent = projectName;
     const arrowIcon = new Image ()
@@ -39,4 +40,23 @@ function createListItem(projectName){
     listNode.append(project)
 }
 
-export {listItemAddInputComponent, createListItem}
+function buttonDisable () {
+    const projectBtn = document.getElementById('projectButton');
+    projectBtn.disabled = true;
+}
+
+function buttonEnabled () {
+    const projectBtn = document.getElementById('projectButton');
+    projectBtn.disabled = false;
+}
+
+function domProjectView (projectTitle) {
+    const contentArea = document.querySelector('.card')
+    contentArea.innerHTML = '';    
+    const header = document.createElement('h3')
+    header.textContent = projectTitle
+    contentArea.append(header)
+
+}
+
+export {listItemAddInputComponent, createListItem, buttonDisable, buttonEnabled, domProjectView}
