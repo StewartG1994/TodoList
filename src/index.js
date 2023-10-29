@@ -1,5 +1,4 @@
 import { navBarSlider } from "./uiFunction";
-import { eventListeners } from "./eventListeners";
-
+import { eventListenersList } from "./eventListeners";
 navBarSlider()
-eventListeners()
+eventListenersList()
