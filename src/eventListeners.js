@@ -1,5 +1,5 @@
-import { listItemAddInputComponent, createListItem, buttonDisable ,buttonEnabled , domProjectView} from "./projectDom"
-import { createProject } from "./project"
+import { listItemAddInputComponent, createListItem, buttonDisable ,buttonEnabled , domProjectView, domEditDescription, taskComponemt} from "./projectDom"
+import { createProject, addTodo } from "./project"
 
 let projectArray = []
 
@@ -21,7 +21,10 @@ function listItemAddToNode (){
 
     addBtn.addEventListener('click', () => {
     projectTitle = document.querySelector('.projectInputField')
-    projectArray.push(createProject(projectTitle.value))
+    let newProject = createProject(projectTitle.value)
+    newProject.defaultTodo()
+    projectArray.push(newProject)
+    console.log(projectArray)
     createListItem(projectTitle.value, projectArray.findIndex(item => item.projectName === projectTitle.value))
     projectAddDivParent.removeChild(projectAddDiv)
     projectView()
@@ -43,11 +46,29 @@ function closeBtn () {
 
 function projectView (){
     let projectListItem = document.querySelectorAll('.projectLi')
+    const contentArea = document.querySelector('.card')
     console.log(projectListItem)
-    projectListItem.forEach(item => item.addEventListener('click', (e) => (domProjectView(projectArray[e.target.getAttribute('index')].projectName))))
+    projectListItem.forEach(item => item.addEventListener('click', (e) => {
+    domProjectView(projectArray[e.target.getAttribute('index')].projectName, projectArray[e.target.getAttribute('index')].description,  projectArray.findIndex(item => item.projectName === projectArray[e.target.getAttribute('index')].projectName))
+   
+
+   let projectIndex = (projectArray[projectArray.findIndex(item => item.projectName === projectArray[e.target.getAttribute('index')].projectName)].todoArray)
+   taskComponemt(projectIndex[0].todoName, projectIndex[0].description,projectIndex[0].dueDate, projectIndex[0].competed, contentArea)
+}))
+      
+    
+}
+
+function editDescription()
+{
+    console.log('test')
+    const descriptionDiv = document.querySelector('.desDiv')
+    descriptionDiv.addEventListener('click', () => {domEditDescription()})
+
 
 
 }
+
 
 function eventListenersList () {
 listItemAdd()

@@ -50,13 +50,55 @@ function buttonEnabled () {
     projectBtn.disabled = false;
 }
 
-function domProjectView (projectTitle) {
-    const contentArea = document.querySelector('.card')
-    contentArea.innerHTML = '';    
-    const header = document.createElement('h3')
-    header.textContent = projectTitle
-    contentArea.append(header)
+function taskComponemt(todoName, description, dueDate, competed,appendTo){
+    const taskDiv = document.createElement('div')
+    const todoNameText = document.createElement('p')
+    const descriptionText = document.createElement('p')
+    const dueDateText = document.createElement('p')
+    const competedText = document.createElement('p')
+    taskDiv.classList.add('taskDiv')
 
+
+    todoNameText.textContent = todoName
+    descriptionText.textContent = description
+    dueDateText.textContent = dueDate
+    competedText.textContent = competed
+
+    taskDiv.append(todoNameText,descriptionText, dueDateText, competedText)
+    appendTo.append(taskDiv)
 }
 
-export {listItemAddInputComponent, createListItem, buttonDisable, buttonEnabled, domProjectView}
+function domProjectView (projectTitle, projectDescription,setAttribute) {
+    console.log(setAttribute)
+    const contentArea = document.querySelector('.card')
+    contentArea.setAttribute('index', setAttribute)
+    console.log(projectDescription)
+    contentArea.innerHTML = '';    
+    const header = document.createElement('h3')
+    const descriptionDiv = document.createElement('div')
+    descriptionDiv.classList.add('desDiv')
+    const descriptionHeader = document.createElement('h5')
+    descriptionHeader.textContent = 'Project Description'
+    const descriptionText = document.createElement('p')
+    descriptionText.classList.add('desText')
+    descriptionText.textContent = projectDescription
+    descriptionDiv.append(descriptionHeader,descriptionText)
+    header.textContent = projectTitle
+    contentArea.append(header, descriptionDiv)
+}
+
+
+
+function domEditDescription (){
+    const descriptionDiv = document.querySelector('.desDiv')
+    descriptionDiv.innerHTML = ''
+    descriptionDiv.classList.add('desInputDiv')
+    const descriptionInput = document.createElement('input')
+    descriptionInput.type = 'text';
+    descriptionInput.classList.add('desInput')
+    descriptionDiv.append(descriptionInput)
+
+    
+}
+
+export {listItemAddInputComponent, createListItem, buttonDisable, buttonEnabled, domProjectView, domEditDescription, taskComponemt}
