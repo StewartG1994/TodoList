@@ -3,11 +3,6 @@ function createProject (projectName) {
     let description = 'Type in your project description here...'
     let todoArray = []
 
-
-    const editDescription = (newProjectDescription) =>{
-        description = newProjectDescription
-    }
-
     const createTodo = (todoName, description, dueDate, competed) => {
     return {todoName, description, dueDate,competed}
     }

@@ -262,3 +262,60 @@ border-bottom: 2px solid #d1453b;
     width: 100%;
     height: 100px;
 }
+
+.taskDiv{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #d1453b;
+    border-radius: 5px;
+    width: 50vw;
+
+}
+
+.deleteBtn{
+    border: 1px solid red;
+    background-color: #d1453b;
+    color: white
+}
+
+.deleteBtn:hover{
+    transform: scale(1.01);
+    background-color: #d1453b;
+    color: white;
+    border: 1px solid red;
+    border-radius: 10px;
+    transition: ease-in;
+}
+
+.viewBtn{   
+     border: 1px solid green;
+    background-color: green;
+    color: white
+}
+
+.viewBtn:hover{
+    transform: scale(1.01);
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    border-radius: 10px;
+    transition: ease-in;
+}
+
+.addTaskBtn{
+    border: 1px solid green;
+    background-color: green;
+    color: white
+}
+
+.addTaskBtn:hover{
+    transform: scale(1.01);
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    border-radius: 10px;
+    transition: ease-in;
+}

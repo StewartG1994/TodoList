@@ -62,43 +62,37 @@ function taskComponemt(todoName, description, dueDate, competed,appendTo){
     todoNameText.textContent = todoName
     descriptionText.textContent = description
     dueDateText.textContent = dueDate
-    competedText.textContent = competed
 
-    taskDiv.append(todoNameText,descriptionText, dueDateText, competedText)
+    if (competed) {competedText.textContent = 'Completed'}
+    else{    competedText.textContent = 'Not Finshed'  }
+
+    const viewButton = document.createElement('button')
+    viewButton.classList.add('viewBtn')
+    const deleteButton = document.createElement('button')
+    deleteButton.classList.add('deleteBtn')
+
+    viewButton.textContent = 'View / Edit'
+    deleteButton.textContent = 'Delete'
+
+    taskDiv.append(todoNameText,descriptionText, dueDateText, competedText, viewButton, deleteButton)
     appendTo.append(taskDiv)
 }
 
-function domProjectView (projectTitle, projectDescription,setAttribute) {
+function domProjectView (projectTitle,setAttribute) {
     console.log(setAttribute)
     const contentArea = document.querySelector('.card')
+    const addTaskBtn = document.createElement('button')
+    addTaskBtn.classList.add('addTaskBtn')
+    addTaskBtn.textContent = 'Add Task'
+
+
     contentArea.setAttribute('index', setAttribute)
-    console.log(projectDescription)
     contentArea.innerHTML = '';    
     const header = document.createElement('h3')
-    const descriptionDiv = document.createElement('div')
-    descriptionDiv.classList.add('desDiv')
-    const descriptionHeader = document.createElement('h5')
-    descriptionHeader.textContent = 'Project Description'
-    const descriptionText = document.createElement('p')
-    descriptionText.classList.add('desText')
-    descriptionText.textContent = projectDescription
-    descriptionDiv.append(descriptionHeader,descriptionText)
     header.textContent = projectTitle
-    contentArea.append(header, descriptionDiv)
+    contentArea.append(header, addTaskBtn)
 }
 
+function addTaskInput (){}
 
-
-function domEditDescription (){
-    const descriptionDiv = document.querySelector('.desDiv')
-    descriptionDiv.innerHTML = ''
-    descriptionDiv.classList.add('desInputDiv')
-    const descriptionInput = document.createElement('input')
-    descriptionInput.type = 'text';
-    descriptionInput.classList.add('desInput')
-    descriptionDiv.append(descriptionInput)
-
-    
-}
-
-export {listItemAddInputComponent, createListItem, buttonDisable, buttonEnabled, domProjectView, domEditDescription, taskComponemt}
+export {listItemAddInputComponent, createListItem, buttonDisable, buttonEnabled, domProjectView, taskComponemt}
