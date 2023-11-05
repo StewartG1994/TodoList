@@ -1,4 +1,5 @@
 import { listItemAddInputComponent, createListItem, buttonDisable ,buttonEnabled , domProjectView,  taskComponemt} from "./projectDom"
+import { addTaskInput } from "./taskFunctions"
 import { createProject, addTodo } from "./project"
 
 let projectArray = []
@@ -62,6 +63,7 @@ function projectView (){
            i++;
 }
 
+addTaskInput(projectIndex)
 
 
 }))

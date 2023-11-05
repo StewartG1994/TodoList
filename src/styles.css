@@ -214,6 +214,7 @@ border-bottom: 2px solid #d1453b;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
 }
 
 
@@ -225,7 +226,6 @@ border-bottom: 2px solid #d1453b;
 }
 
 .card{
-    width: 80vw;
     height: 50vh;
     display: flex;
     align-items: center;
@@ -275,6 +275,25 @@ border-bottom: 2px solid #d1453b;
 
 }
 
+
+
+.createTaskDiv{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #d1453b;
+    border-radius: 5px;
+
+}
+
+.createTaskDiv > input{
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
 .deleteBtn{
     border: 1px solid red;
     background-color: #d1453b;
@@ -318,4 +337,23 @@ border-bottom: 2px solid #d1453b;
     border: 1px solid green;
     border-radius: 10px;
     transition: ease-in;
+}
+
+.formView{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.addTaskButtonId{
+    background-color: green;
+    padding: 10px;
+    color: white;
+}
+
+.addTaskButtonId:hover{
+    padding: 10px;
+    background-color: green;
+    border: none;
 }

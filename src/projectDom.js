@@ -60,6 +60,7 @@ function taskComponemt(todoName, description, dueDate, competed,appendTo){
 
 
     todoNameText.textContent = todoName
+    
     descriptionText.textContent = description
     dueDateText.textContent = dueDate
 
@@ -93,6 +94,5 @@ function domProjectView (projectTitle,setAttribute) {
     contentArea.append(header, addTaskBtn)
 }
 
-function addTaskInput (){}
 
 export {listItemAddInputComponent, createListItem, buttonDisable, buttonEnabled, domProjectView, taskComponemt}
