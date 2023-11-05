@@ -1,16 +1,38 @@
-function addTaskInput (data){
+import { createProject } from "./project"
+import { taskComponemt } from "./projectDom"
+
+function addTaskInput (data,array){
     const taskButton = document.querySelector('.addTaskBtn')
     const contentArea = document.querySelector('.card')
     const taskDiv = document.querySelector('.taskDiv')
-    console.log(contentArea)
-
-
 
     taskButton.addEventListener('click', () => {
-        console.log('taskButton')
         addTaskComponent(contentArea ,taskDiv)
-        console.log(data)
+        pushTask(data,array)
     })
+}
+
+function pushTask (data, array){
+    const addButton = document.querySelector('.addTaskButtonId')
+    const todoInput = document.getElementById('nameId')
+    const descriptionInput = document.getElementById('descriptionId')
+    const dueDateInput = document.getElementById('dueDateId')
+    const contentArea = document.querySelector('.card')
+    const taskDiv = document.querySelector('.createTaskDiv')
+
+    console.log(array)
+
+
+
+    addButton.addEventListener('click', () =>{
+        data.addTodo(todoInput.value, descriptionInput.value, dueDateInput.value, false)
+        let index = data.todoArray.findIndex(item => item.description === descriptionInput.value )
+        taskComponemt(todoInput.value, descriptionInput.value, dueDateInput.value, false, contentArea,index)
+        contentArea.removeChild(taskDiv)
+        console.log(data.todoArray)
+
+    })
+
 }
 
 function addTaskComponent(appendTo, beforeDiv){
@@ -19,6 +41,7 @@ function addTaskComponent(appendTo, beforeDiv){
 
     const todoDiv = document.createElement('div')
     const todoNameText = document.createElement('input')
+    todoNameText.id = 'nameId'
     const todoLabel = document.createElement('label')
     todoLabel.innerHTML = 'Task Name';
     todoDiv.classList.add('formView')
@@ -27,6 +50,7 @@ function addTaskComponent(appendTo, beforeDiv){
 
     const descriptionDiv = document.createElement('div')
     const descriptionText = document.createElement('input')
+    descriptionText.id = 'descriptionId'
     const descriptionLabelOne = document.createElement('label')
     descriptionLabelOne.innerHTML = 'Project Description';
     descriptionDiv.classList.add('formView')
@@ -34,6 +58,7 @@ function addTaskComponent(appendTo, beforeDiv){
 
     const dueDateDiv = document.createElement('div')
     const dueDateText = document.createElement('input')
+    dueDateText.id = 'dueDateId'
     dueDateText.placeholder = 'dd/mm/yy'
     const dueDateLabel = document.createElement('label')
     dueDateLabel.innerHTML = 'Due Date'
@@ -48,8 +73,6 @@ function addTaskComponent(appendTo, beforeDiv){
     competedDiv.classList.add('formView')
     competedDiv.append(competedLabel,competedText)
 
-
-
     const addButton = document.createElement('button')
     addButton.classList.add('addTaskButtonId')
     addButton.textContent = '+'
@@ -61,6 +84,12 @@ function addTaskComponent(appendTo, beforeDiv){
     
 }
 
+function deleteTask (){
+    const deleteBtn = document.querySelector('.deleteBtn')
+    console.log(deleteBtn)
 
-export {addTaskInput}
+
+}
+
+export {addTaskInput, deleteTask}
 

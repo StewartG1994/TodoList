@@ -50,17 +50,17 @@ function buttonEnabled () {
     projectBtn.disabled = false;
 }
 
-function taskComponemt(todoName, description, dueDate, competed,appendTo){
+function taskComponemt(todoName, description, dueDate, competed,appendTo, id){
     const taskDiv = document.createElement('div')
     const todoNameText = document.createElement('p')
     const descriptionText = document.createElement('p')
     const dueDateText = document.createElement('p')
     const competedText = document.createElement('p')
     taskDiv.classList.add('taskDiv')
-
+    taskDiv.setAttribute('index', id)
 
     todoNameText.textContent = todoName
-    
+
     descriptionText.textContent = description
     dueDateText.textContent = dueDate
 

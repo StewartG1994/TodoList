@@ -15,6 +15,7 @@ function createProject (projectName) {
         todoArray.push(createTodo('Default Todo', 'Description', '29/06/2024', false))
     }
 
-    return {projectName, description, todoArray, addTodo, defaultTodo}
+    return {projectName, description, todoArray, addTodo, defaultTodo, createTodo}
 }
 export {createProject};
+
