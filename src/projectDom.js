@@ -73,6 +73,7 @@ function taskComponemt(todoName, description, dueDate, competed,appendTo, id){
     deleteButton.classList.add('deleteBtn')
 
     viewButton.textContent = 'View / Edit'
+    viewButton.setAttribute('index', id)
     deleteButton.textContent = 'Delete'
 
     taskDiv.append(todoNameText,descriptionText, dueDateText, competedText, viewButton, deleteButton)
@@ -85,7 +86,7 @@ function domProjectView (projectTitle,setAttribute) {
     const addTaskBtn = document.createElement('button')
     addTaskBtn.classList.add('addTaskBtn')
     addTaskBtn.textContent = 'Add Task'
-
+    
 
     contentArea.setAttribute('index', setAttribute)
     contentArea.innerHTML = '';    

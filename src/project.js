@@ -15,7 +15,15 @@ function createProject (projectName) {
         todoArray.push(createTodo('Default Todo', 'Description', '29/06/2024', false))
     }
 
-    return {projectName, description, todoArray, addTodo, defaultTodo, createTodo}
+    const editTodo = (editItem, todoname, description, duedate,completed) =>
+    {
+    editItem.todoName = todoname
+    editItem.description = description
+    editItem.dueDate = duedate
+    editItem.competed = completed
+}
+
+    return {projectName, description, todoArray, addTodo, defaultTodo, createTodo, editTodo}
 }
 export {createProject};
 

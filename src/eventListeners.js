@@ -1,6 +1,6 @@
 import { listItemAddInputComponent, createListItem, buttonDisable ,buttonEnabled , domProjectView,  taskComponemt} from "./projectDom"
-import { addTaskInput, deleteTask } from "./taskFunctions"
-import { createProject, addTodo } from "./project"
+import { addTaskInput, deleteTask, editTask } from "./taskFunctions"
+import { createProject } from "./project"
 
 
 let projectArray = []
@@ -64,7 +64,6 @@ function projectView (){
         taskComponemt(projectIndex[i].todoName, projectIndex[i].description,projectIndex[i].dueDate, projectIndex[i].competed, contentArea, 0) 
            i++;
 }
-
 deleteTask(projectArray[projectArray.findIndex(item => item.projectName === projectArray[e.target.getAttribute('index')].projectName)].todoArray)
 addTaskInput(projectArray[projectArray.findIndex(item => item.projectName === projectArray[e.target.getAttribute('index')].projectName)], projectArray)
 
@@ -77,4 +76,4 @@ function eventListenersList () {
 listItemAdd()
 }
 
-export {eventListenersList, }
+export {eventListenersList, projectArray }
