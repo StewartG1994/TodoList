@@ -6,10 +6,14 @@ function addTaskInput (data,array){
     const contentArea = document.querySelector('.card')
     const taskDiv = document.querySelector('.taskDiv')
 
+
     taskButton.addEventListener('click', () => {
+
         addTaskComponent(contentArea ,taskDiv)
         pushTask(data,array)
-    })
+   })
+   deleteTask(data.todoArray)
+
 }
 
 function pushTask (data, array){
@@ -29,9 +33,10 @@ function pushTask (data, array){
         let index = data.todoArray.findIndex(item => item.description === descriptionInput.value )
         taskComponemt(todoInput.value, descriptionInput.value, dueDateInput.value, false, contentArea,index)
         contentArea.removeChild(taskDiv)
+        deleteTask(data.todoArray)
         console.log(data.todoArray)
-
     })
+
 
 }
 
@@ -80,15 +85,24 @@ function addTaskComponent(appendTo, beforeDiv){
     createTaskDiv.classList.add('createTaskDiv')
 
     createTaskDiv.append(todoDiv,descriptionDiv,dueDateDiv, addButton)
-    appendTo.insertBefore(createTaskDiv, beforeDiv) 
+    appendTo.append(createTaskDiv) 
     
 }
 
-function deleteTask (){
-    const deleteBtn = document.querySelector('.deleteBtn')
-    console.log(deleteBtn)
+function deleteTask (array){
+    const deleteBtn = document.querySelectorAll('.deleteBtn')
+    const contentArea = document.querySelector('.card')
 
-
+    deleteBtn.forEach(element => {
+        element.addEventListener('click', (event) => {
+        console.log(array)
+        let index = event.target.parentElement.getAttribute('index')
+        let child = event.target.parentElement
+        contentArea.removeChild(child)
+        array.splice(index,1)
+            console.log(child)
+        })
+    });
 }
 
 export {addTaskInput, deleteTask}

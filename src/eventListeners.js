@@ -61,11 +61,11 @@ function projectView (){
 
     while (i < projectIndex.length) {
         console.log([i])
-        taskComponemt(projectIndex[i].todoName, projectIndex[i].description,projectIndex[i].dueDate, projectIndex[i].competed, contentArea,0) 
+        taskComponemt(projectIndex[i].todoName, projectIndex[i].description,projectIndex[i].dueDate, projectIndex[i].competed, contentArea, 0) 
            i++;
 }
 
-deleteTask()
+deleteTask(projectArray[projectArray.findIndex(item => item.projectName === projectArray[e.target.getAttribute('index')].projectName)].todoArray)
 addTaskInput(projectArray[projectArray.findIndex(item => item.projectName === projectArray[e.target.getAttribute('index')].projectName)], projectArray)
 
 }))
