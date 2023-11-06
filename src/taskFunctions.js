@@ -37,6 +37,7 @@ function pushTask (data, array){
         taskComponemt(todoInput.value, descriptionInput.value, dueDateInput.value, false, contentArea,index)
         contentArea.removeChild(taskDiv)
         deleteTask(data.todoArray)
+        editTask()
     })
 
 
@@ -168,9 +169,17 @@ function editTask (array){
     editBtn.forEach(element => element.addEventListener('click', (event) =>{
         console.log(element)
         
-        let index = event.target.parentElement
-        let arrayIndex = array[index.getAttribute('index')]
-        editComponent(contentArea,array, event.target.parentElement)
+        let title = event.target.parentElement.parentElement.firstChild.textContent
+        let projectIndex = projectArray.findIndex(item => item.projectName === title)
+        let project = projectArray[projectIndex].todoArray
+
+        
+        let todo = event.target.parentElement.getAttribute('index')
+        console.log(project[todo])
+
+
+
+            editComponent(contentArea,array, event.target.parentElement)
     }))
 }
 
