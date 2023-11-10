@@ -22,7 +22,6 @@ function createProject (projectName) {
     editItem.dueDate = duedate
     editItem.competed = completed
 }
-
     return {projectName, description, todoArray, addTodo, defaultTodo, createTodo, editTodo}
 }
 export {createProject};
