@@ -1,4 +1,6 @@
 import { listItemAddInputComponent ,addListItem, buttonDisable,buttonEnabled, displayProjectDom } from "./projectDomFunctions";
+import {addTaskComponent} from './taskFunctions'
+
 import {createProject} from './project'
 let projectArray = []
 
@@ -24,6 +26,7 @@ function projectAdd (){
     addBtn.addEventListener('click', () =>{
     projectAddDivParent.removeChild(projectAddDiv)
     let obj = createProject(inputValue.value)
+    obj.defaultTodo()
     projectArray.push(obj)
     let index = projectArray.findIndex(item => item.projectName === obj.projectName)
     buttonEnabled()
@@ -47,11 +50,43 @@ function displayProject(){
 
     projectLinks.forEach(item => item.addEventListener('click', (event) =>{
         let obj = projectArray[event.target.getAttribute('index')]
-        displayProjectDom(obj)
-
+        let objIndex = projectArray.findIndex(item => item.projectName === obj.projectName )
+        displayProjectDom(obj, objIndex)
+        addTaskListenser()
     }))
-
 }
+
+function addTaskListenser (){
+    const contentArea = document.querySelector('.card')
+    const taskDiv = document.querySelector('.taskDiv')
+    const addBtn = document.querySelector('.addTaskBtn')
+
+    addBtn.addEventListener('click', () =>{
+        addTaskComponent(contentArea, taskDiv)
+        pushTaskListener()
+})
+}
+
+function pushTaskListener () {
+    const addButton = document.querySelector('.addTaskButtonId')
+    const todoInput = document.getElementById('nameId')
+    const descriptionInput = document.getElementById('descriptionId')
+    const dueDateInput = document.getElementById('dueDateId')
+    const contentArea = document.querySelector('.card')
+    const taskDiv = document.querySelector('.createTaskDiv')
+
+    addButton.addEventListener('click', () =>{
+        let object = projectArray[contentArea.getAttribute('index')]
+        object.addTodo(todoInput.value, descriptionInput.value, dueDateInput.value, false)
+        let objIndex = projectArray.findIndex(item => item.projectName === object.projectName )
+        displayProjectDom(object, objIndex)
+        addTaskListenser()
+    })
+}
+
+
+
+
 
 function eventListeners (){
     addProjectEventButton()
