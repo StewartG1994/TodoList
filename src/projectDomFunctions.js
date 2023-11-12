@@ -51,9 +51,16 @@ function buttonEnabled () {
 }
 
 function displayProjectDom(obj){
+    const content = document.querySelector('.card')
+    content.textContent = ''
+    headerComponent(obj.projectName, content)
     console.log(obj)
 }
 
+function headerComponent(projectName, appendTo){
+    let header = document.createElement('h3')
+    header.textContent = projectName
+    appendTo.append(header)
+}
 
-
-export {listItemAddInputComponent, addListItem, buttonDisable,buttonEnabled}
+export {listItemAddInputComponent, addListItem, buttonDisable,buttonEnabled, displayProjectDom}

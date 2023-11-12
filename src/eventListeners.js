@@ -1,4 +1,4 @@
-import { listItemAddInputComponent ,addListItem, buttonDisable,buttonEnabled } from "./projectDomFunctions";
+import { listItemAddInputComponent ,addListItem, buttonDisable,buttonEnabled, displayProjectDom } from "./projectDomFunctions";
 import {createProject} from './project'
 let projectArray = []
 
@@ -47,7 +47,8 @@ function displayProject(){
 
     projectLinks.forEach(item => item.addEventListener('click', (event) =>{
         let obj = projectArray[event.target.getAttribute('index')]
-        console.log(obj)
+        displayProjectDom(obj)
+
     }))
 
 }
