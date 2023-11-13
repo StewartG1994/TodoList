@@ -1,5 +1,5 @@
 import { listItemAddInputComponent ,addListItem, buttonDisable,buttonEnabled, displayProjectDom } from "./projectDomFunctions";
-import {addTaskComponent} from './taskFunctions'
+import {addTaskComponent, deleteTask} from './taskFunctions'
 
 import {createProject} from './project'
 let projectArray = []
@@ -52,6 +52,7 @@ function displayProject(){
         let obj = projectArray[event.target.getAttribute('index')]
         let objIndex = projectArray.findIndex(item => item.projectName === obj.projectName )
         displayProjectDom(obj, objIndex)
+        deleteTaskEventListener()
         addTaskListenser()
     }))
 }
@@ -64,7 +65,10 @@ function addTaskListenser (){
     addBtn.addEventListener('click', () =>{
         addTaskComponent(contentArea, taskDiv)
         pushTaskListener()
+        addTaskListenser()
 })
+deleteTaskEventListener()
+
 }
 
 function pushTaskListener () {
@@ -82,7 +86,26 @@ function pushTaskListener () {
         displayProjectDom(object, objIndex)
         addTaskListenser()
     })
+    deleteTaskEventListener()
+
 }
+
+function deleteTaskEventListener(){
+
+    const deleteBtn = document.querySelectorAll('.deleteBtn')
+    const contentArea = document.querySelector('.card')
+
+    deleteBtn.forEach(element => {
+        element.addEventListener('click', (event) => {
+            let object = projectArray[contentArea.getAttribute('index')]
+            let objIndex = projectArray.findIndex(item => item.projectName === object.projectName )
+            let todoArray = object.todoArray
+            let arrayIndex = event.target.parentElement.getAttribute('index')
+            todoArray.splice(arrayIndex,1)
+            displayProjectDom(object, objIndex)
+            addTaskListenser()
+        })
+    });}
 
 
 

@@ -60,7 +60,7 @@ function displayProjectDom(obj ,index){
 
     let i = 0;
     while (i < obj.todoArray.length) {
-    taskComponemt(obj.todoArray[i].todoName,obj.todoArray[i].description,obj.todoArray[i].dueDate,obj.todoArray[i].competed,content, 0)
+    taskComponemt(obj.todoArray[i].todoName,obj.todoArray[i].description,obj.todoArray[i].dueDate,obj.todoArray[i].competed,content, [i])
            i++;
 }
 }

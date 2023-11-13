@@ -47,4 +47,20 @@ function addTaskComponent(appendTo, beforeDiv){
     appendTo.append(createTaskDiv)    
 }
 
-export {addTaskComponent}
+function deleteTask (array){
+    const deleteBtn = document.querySelectorAll('.deleteBtn')
+    const contentArea = document.querySelector('.card')
+
+    deleteBtn.forEach(element => {
+        element.addEventListener('click', (event) => {
+
+     //  let index = event.target.parentElement.getAttribute('index')
+     //   let child = event.target.parentElement
+     //   contentArea.removeChild(child)
+      //  array.splice(index,1)
+     //       console.log(child)
+        })
+    });
+}
+
+export {addTaskComponent, deleteTask}
