@@ -1,5 +1,5 @@
 import { listItemAddInputComponent ,addListItem, buttonDisable,buttonEnabled, displayProjectDom } from "./projectDomFunctions";
-import {addTaskComponent, deleteTask} from './taskFunctions'
+import {addTaskComponent, editComponent} from './taskFunctions'
 
 import {createProject} from './project'
 let projectArray = []
@@ -54,6 +54,7 @@ function displayProject(){
         displayProjectDom(obj, objIndex)
         deleteTaskEventListener()
         addTaskListenser()
+        editTaskListener()
     }))
 }
 
@@ -66,6 +67,7 @@ function addTaskListenser (){
         addTaskComponent(contentArea, taskDiv)
         pushTaskListener()
         addTaskListenser()
+        editTaskListener()
 })
 deleteTaskEventListener()
 
@@ -85,6 +87,7 @@ function pushTaskListener () {
         let objIndex = projectArray.findIndex(item => item.projectName === object.projectName )
         displayProjectDom(object, objIndex)
         addTaskListenser()
+        editTaskListener()
     })
     deleteTaskEventListener()
 
@@ -104,9 +107,48 @@ function deleteTaskEventListener(){
             todoArray.splice(arrayIndex,1)
             displayProjectDom(object, objIndex)
             addTaskListenser()
+            editTaskListener()
         })
     });}
 
+function editTaskListener (){
+    const contentArea = document.querySelector('.card')
+
+    const editBtn = document.querySelectorAll('.viewBtn')
+    editBtn.forEach(element => element.addEventListener('click', (event) =>{
+        let object = projectArray[contentArea.getAttribute('index')]
+        let objIndex = projectArray.findIndex(item => item.projectName === object.projectName )
+        let todoArray = object.todoArray
+        let arrayIndex = event.target.parentElement.getAttribute('index')
+        let editTodoItem = todoArray[arrayIndex]
+        editComponent(event.target.parentElement, editTodoItem.todoName, editTodoItem.description, editTodoItem.dueDate)
+        console.log(object, objIndex)
+        pushEditListener(object.todoArray[arrayIndex], object, objIndex)
+    }))
+
+}
+
+function pushEditListener (arrayItem, objIndex, object){
+
+    let todoName = document.getElementById('nameId')
+    let description = document.getElementById('descriptionId')
+    let dueDate = document.getElementById('dueDateId')
+    const editBtn = document.querySelector('.editTask')
+
+    editBtn.addEventListener('click', () =>{
+        console.log(todoName.value, description.value, dueDate.value)
+        arrayItem.todoName = todoName.value
+        arrayItem.description = description.value;
+        arrayItem.dueDate = dueDate.value
+        console.log(object, objIndex) 
+        displayProjectDom(objIndex, object)
+        deleteTaskEventListener()
+        addTaskListenser()
+        editTaskListener()
+    })
+
+  
+}
 
 
 

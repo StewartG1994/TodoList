@@ -318,9 +318,11 @@ border-bottom: 2px solid #d1453b;
     color: white;
     border: 1px solid red;
     border-radius: 10px;
+   
     transition: ease-in;
 }
-addTaskBtn{
+
+.addTaskBtn{
     border: 1px solid green;
     background-color: green;
     color: white
@@ -364,4 +366,15 @@ addTaskBtn{
     padding: 10px;
     background-color: green;
     border: none;
+}
+
+
+.createEditDiv{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+border: none;
+
 }
